@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t karakurty/docker-react -f Dockerfile.dev .
+
+script:
+  docker run -e CI=true karakurty/docker-react npm run test
+
